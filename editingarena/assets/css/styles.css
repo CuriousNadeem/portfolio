@@ -242,7 +242,7 @@ p {
     transition: top 0.6s ease-in-out; /* Smooth sliding effect */
   }
   .collapse-menu.active {
-    top: 15%; /* Slide down to below the navbar */
+    top: 100px; /* Slide down to below the navbar */
   }
 
 }
