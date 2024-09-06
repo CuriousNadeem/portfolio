@@ -1,0 +1,22 @@
+:root {
+    --primary-color: #080808;
+    --secondary-color: rgba(217, 255, 1, 0.8);
+    --accent-color: #007acc;
+    --secondary-color-40: rgba(217, 255, 1, 0.4);
+    --secondary-color-20: rgba(217, 255, 1, 0.2);
+    --accent-color-40: rgba(0, 122, 204, 0.4);
+    --accent-color-20: rgba(0, 122, 204, 0.2);
+    --secondary-dark-hover: #a1b300;
+    --accent-dark-hover: #005c99;
+    --dark-color: #0c0c0c;
+    /* text */
+    --text-color: #ffffff;
+    --dark-text: #000000;
+    --white-7: rgba(255, 255, 255, 0.07);
+    --white-30: rgba(255, 255, 255, 0.30);
+    --white-20: rgba(255, 255, 255, 0.20);
+    --dark-text-color: rgba(153, 153, 153, 1);
+    --darkgrey-text-color: rgb(80, 80, 80);
+    /* shahow and other */
+    --shadow-color: rgba(0, 0, 0, 0.2);
+  }
