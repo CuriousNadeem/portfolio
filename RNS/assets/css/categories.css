@@ -1,0 +1,59 @@
+.carousel-container {
+  width: 100%;
+  margin: 70px 0 70px 0;
+  overflow: hidden;
+}
+
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.image-container {
+  text-align: center; /* Centers the content within the container */
+}
+
+.image-container img {
+  width: 100%; /* Make sure images take up full width of container */
+  display: block; /* Ensures no extra space below the image */
+}
+
+.image-container h5 {
+  margin: 10px 0 0 0;
+  font-size: 25px;
+  font-weight: 400;
+  color: #333; /* Adjust color as needed */
+}
+
+.carousel-wrapper .image-container {
+  flex-shrink: 0;
+  padding: 0 30px; /* 30px padding on left and right */
+}
+
+.carousel-wrapper .image-container img {
+  width: 100%;
+  display: block;
+}
+
+/* Default for 4 images */
+.carousel-wrapper .image-container {
+  width: 25%;
+}
+
+@media (max-width: 1024px) {
+  .carousel-wrapper .image-container {
+    width: 33.33%; /* 3 images */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper .image-container {
+    width: 50%; /* 2 images */
+  }
+}
+
+@media (max-width: 660px) {
+  .carousel-wrapper .image-container {
+    width: 100%; /* 1 image */
+  }
+}
