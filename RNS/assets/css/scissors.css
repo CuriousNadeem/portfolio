@@ -1,0 +1,33 @@
+/* CSS */
+
+.scissor-container {
+  top: -38px;
+  position: relative;
+  width: 100%;
+}
+.animation-section {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 0; /* Start position */
+}
+
+.animation-frame {
+  width: 80px;
+  height: 80px;
+}
+
+.animation-section.move-right {
+  animation-name: moveRight;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveRight {
+  from {
+    left: 0;
+  }
+  to {
+    left: 20%;
+  }
+}
