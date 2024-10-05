@@ -1,0 +1,63 @@
+/* CSS */
+
+.scissor-container {
+  top: -38px;
+  position: relative;
+  width: 100%;
+}
+.animation-section {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 0; /* Start position */
+}
+
+.animation-frame {
+  width: 80px;
+  height: 80px;
+}
+
+.animation-section.move-right {
+  animation-name: moveRight;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveRight {
+  from {
+    left: 0;
+  }
+  to {
+    left: 20%;
+  }
+}
+
+.stat-mini-scissor0,
+.stat-mini-scissor1,
+.stat-mini-scissor2,
+.stat-mini-scissor3 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -19px;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.stat-mini-scissor0 {
+  animation-name: minimoveRight0;
+}
+.stat-mini-scissor1 {
+  animation-name: minimoveRight1;
+}
+.stat-mini-scissor2 {
+  animation-name: minimoveRight2;
+}
+.stat-mini-scissor3 {
+  animation-name: minimoveRight3;
+}
+
+.stat-mini-frames {
+  width: 40px;
+  height: 40px;
+}
