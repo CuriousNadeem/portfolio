@@ -1,0 +1,105 @@
+:root {
+    --primary-color: #68bf68;
+    --background-color: #000000;
+    --text-color: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 8px solid var(--primary-color);
+    border-top: 8px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Sections */
+.section {
+    position: absolute;
+    width: 100%;
+    height: 100dvh;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(0%);
+    transition: transform 1s ease-in-out, opacity 0.5s ease-in-out, height 0.3s ease-in-out;
+    will-change: transform;
+}
+
+.section.no-height {
+    height: auto !important; /* Disable the fixed height */
+}
+
+.section.active {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.section.hidden-up {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.section.hidden-down {
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: var(--primary-color);
+}
+.logo img{
+    max-width: 600px;
+}
+
+.subtitle {
+    font-size: 24px;
+    margin-top: 10px;
+    color: var(--primary-color);
+}

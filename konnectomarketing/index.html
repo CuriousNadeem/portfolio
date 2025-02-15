@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Sections</title>
+    <link rel="stylesheet" href="assets/styles/styles.css">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- First Section (Logo) -->
+    <section id="section1" class="section active" data-id="1">
+        <div class="logo">
+            <img src="assets/image/KonnectoLogoPNG2.png" alt="Konnecto">
+        </div>
+        <div class="subtitle">Connecting Ideas, Delivering Results</div>
+    </section>
+
+    <!-- Second Section -->
+    <section id="section2" class="section hidden-down" data-id="2">
+        <h1>Section 2 Content</h1>
+        <div class="buttons">
+            <button onclick="moveUp()">Move Up</button>
+            <button onclick="moveDown()">Move Down</button>
+        </div>
+    </section>
+
+    <!-- Third Section -->
+    <section id="section3" class="section hidden-down" data-id="3">
+        <h1>Section 3 Content</h1>
+        <div class="buttons">
+            <button onclick="moveUp()">Move Up</button>
+            <button onclick="moveDown()">Move Down</button>
+        </div>
+    </section>
+
+    <script src="assets/scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Neue Haas Display';
+    src: url('../fonts/NeueHaas/NeueHaasDisplayRoman.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apparel Light';
+    src: url('../fonts/Apparel/Fontspring-DEMO-apparel-light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apparel Regular';
+    src: url('../fonts/Apparel/Fontspring-DEMO-apparel-regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}

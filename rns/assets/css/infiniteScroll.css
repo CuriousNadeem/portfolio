@@ -1,0 +1,79 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+.scrollwrapper {
+  margin: 50px 0 50px 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+@keyframes scrollLeft {
+  to {
+    left: -200px;
+  }
+}
+
+.scroll-item {
+  font-family: "Ibarra Real Nova";
+  line-height: 1.2em;
+  font-size: 20px;
+  font-weight: 400;
+  width: 230px;
+  height: auto;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 6px;
+  position: absolute;
+  left: max(calc(200px * 8), 100%);
+  animation-name: scrollLeft;
+  animation-duration: 60s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.scroll-img {
+  width: 102px;
+  height: 100px;
+}
+
+.scroll-item1 {
+  animation-delay: calc(60s / 7 * (7 - 1) * -1);
+}
+
+.scroll-item2 {
+  animation-delay: calc(60s / 7 * (7 - 2) * -1);
+}
+
+.scroll-item3 {
+  animation-delay: calc(60s / 7 * (7 - 3) * -1);
+}
+
+.scroll-item4 {
+  animation-delay: calc(60s / 7 * (7 - 4) * -1);
+}
+
+.scroll-item5 {
+  animation-delay: calc(60s / 7 * (7 - 5) * -1);
+}
+
+.scroll-item6 {
+  animation-delay: calc(60s / 7 * (7 - 6) * -1);
+}
+
+.scroll-item7 {
+  animation-delay: calc(60s / 7 * (7 - 7) * -1);
+}

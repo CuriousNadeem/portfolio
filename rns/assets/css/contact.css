@@ -1,0 +1,162 @@
+.contact-container {
+  background-color: var(--bg-color);
+  padding: 5px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 60px auto;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contactform {
+  width: 100%;
+  padding: 0 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contact-heading {
+  width: 100%;
+  margin: auto;
+  padding: 10px;
+}
+.main-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+}
+
+/* Input and Textarea Styling */
+.contact-container input,
+.contact-container textarea {
+  width: calc(100% - 20px);
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid var(--primary-color);
+  background: var(--bg-color);
+  color: var(--black);
+
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.name-email {
+  width: calc(100% - 20px);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Focus State for Inputs and Textarea */
+.contact-container input:focus,
+.contact-container textarea:focus {
+  border-color: var(--primary-color);
+  /* Highlight border color */
+  outline: none;
+  /* Remove default outline */
+  box-shadow: inset 0px 1px 3px #000000;
+  /* Outer shadow for focus effect */
+}
+
+/* Button Styling within Contact Form */
+.button-group {
+  width: 100%;
+}
+
+.contact-btn {
+  color: var(--primary-color);
+  width: 150px;
+  height: 50px;
+  margin: 5px 10px 0 10px;
+  border: 1px solid var(--primary-color);
+  font-family: "Cinzel", serif;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+  transition: 0.5s ease;
+}
+
+.contact-btn::before,
+.contact-btn::after {
+  position: absolute;
+  background: var(--bg-color);
+  z-index: -1;
+  transition: 0.5s ease;
+  content: "";
+}
+
+.contact-btn::before {
+  height: 50px;
+  width: 130px;
+}
+
+.contact-btn::after {
+  width: 150px;
+  height: 30px;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.contact-btn:hover::before {
+  width: 0px;
+  color: var(--black);
+  background: #fff;
+}
+
+.contact-btn:hover::after {
+  height: 0px;
+  color: var(--black);
+  background: #fff;
+}
+
+.contact-btn:hover {
+  color: var(--black);
+  background: #fff;
+}
+
+/* Button Hover State */
+.contact-container .button-group button:hover {
+  background: linear-gradient(
+    135deg,
+    var(--primary-hover-color),
+    var(--link-hover-color)
+  );
+  transform: translateY(-5px);
+}
+
+/* Button Active State */
+.contact-container .button-group button:active {
+  background: linear-gradient(
+    135deg,
+    var(--primary-hover-color),
+    var(--link-hover-color)
+  );
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .main-contact {
+    flex-direction: column;
+  }
+  .name-email {
+    width: 100%;
+    gap: 0;
+    flex-direction: column;
+  }
+}

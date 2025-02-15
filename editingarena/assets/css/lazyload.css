@@ -1,0 +1,26 @@
+.lazy-load {
+    opacity: 0;
+    /*   transform: translateX(-100%); Default to slide in from left */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.lazy-load.right {
+    transform: translateX(100%); /* Slide in from right */
+}
+
+.lazy-load.left {
+    transform: translateX(-100%);
+}
+
+.lazy-load.top {
+    transform: translateY(-100%);
+}
+
+.lazy-load.bottom {
+    transform: translateY(100%);
+}
+
+.lazy-load.visible {
+    opacity: 1;
+    /* transform: translateX(0); Move to the original position */
+}
