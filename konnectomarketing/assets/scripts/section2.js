@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const middleSection = document.querySelector(".middle-section");
     const topSection = document.querySelector(".top-section");
     const bottomSection = document.querySelector(".bottom-section");
-    //const cards = document.querySelectorAll(".card");
-
     let timeoutId = null; // Store timeout reference
 
     const observer = new IntersectionObserver(

@@ -77,10 +77,6 @@ body {
 }
 
 /* Buttons */
-.buttons {
-    margin-top: 20px;
-}
-
 button {
     padding: 10px 20px;
     margin: 5px;
@@ -107,7 +103,7 @@ button:hover {
 /* Container */
 .container {
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -141,13 +137,14 @@ button:hover {
 
 .top-section.active, 
 .bottom-section.active {
-    height: 300px; /* Same as Card Styling */
+    height: 200px; /* Same as Card Styling */
 }
 
 /* Card Styling */
 .card {
-    width: 200px;
-    height: 300px; /* Same as final height of top and bottom sections */
+    text-align: center;
+    width: 300px;
+    height: 200px; /* Same as final height of top and bottom sections */
     background-color: var(--primary-color);
     color: white;
     display: flex;
