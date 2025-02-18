@@ -1,98 +1,126 @@
-function readjustheight() {
+function readjustHeight() {
     document.querySelectorAll('.section').forEach((section) => {
         section.classList.add('no-height');
         setTimeout(() => {
-            section.classList.remove('no-height'); // readjust height after 0.5 seconds
-        }, 100);
+            section.classList.remove('no-height'); // readjust height after 0.2 seconds
+        }, 200);
     });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let currentSectionId = "1"; // Track current section ID
+    let currentSectionId = 1; // Ensure this is always a number
     let nextSectionId = 3;
     let jump = false;
     const cards = document.querySelectorAll(".card");
 
     // Preloader removal after loading
+    const preloader = document.getElementById("preloader");
     setTimeout(() => {
-        document.getElementById("preloader").style.opacity = "0";
+        preloader.style.opacity = "0";
+        setTimeout(() => {
+            preloader.style.display = "none"; // Hide after transition
+        }, 1500); // Matches CSS transition time
     }, 1000);
-    document.getElementById("preloader").style.display = "none";
 
     function moveUp() {
-        if(jump === false){
-            nextSectionId = parseInt(currentSectionId) + 1;
+        if (!jump) {
+            nextSectionId = currentSectionId + 1;
         }
+    
         let nextSection = document.querySelector(`.section[data-id="${nextSectionId}"]`);
-
+        
         if (nextSection) {
-            while(currentSectionId < nextSectionId){
+            while (currentSectionId < nextSectionId) {
                 let currentSection = document.querySelector(`.section[data-id="${currentSectionId}"]`);
-                if(currentSection.classList.contains("active"))
-                    currentSection.classList.remove("active");
-                if(currentSection.classList.contains("hidden-down"))
-                    currentSection.classList.remove("hidden-down");
-                
-                currentSection.classList.add("hidden-up"); // Move current section up
-                currentSectionId++;
+                if (currentSection) {
+                    currentSection.classList.remove("active", "hidden-down");
+                    currentSection.classList.add("hidden-up");
+                }
+                currentSectionId++; // Move to the next section
             }
-
+    
+            // Activate the target section
             nextSection.classList.remove("hidden-down");
-            nextSection.classList.add("active"); // Move next section from below
-
-            currentSectionId = nextSection.getAttribute("data-id"); // Update current section
+            nextSection.classList.add("active");
+    
+            // Update the current section ID
+            currentSectionId = Number(nextSection.dataset.id);
         }
     }
+    
 
     function moveDown() {
-        if(jump === false){
-            nextSectionId = parseInt(currentSectionId) - 1;
+        if (!jump) {
+            nextSectionId = currentSectionId - 1;
         }
-        let currentSection = document.querySelector(`.section[data-id="${currentSectionId}"]`);
         let prevSection = document.querySelector(`.section[data-id="${nextSectionId}"]`);
 
         if (prevSection) {
-            currentSection.classList.remove("active");
-            currentSection.classList.add("hidden-down"); // Move current section down
+
+            while (currentSectionId > nextSectionId) {
+                let currentSection = document.querySelector(`.section[data-id="${currentSectionId}"]`);
+                if (currentSection) {
+                    currentSection.classList.remove("active", "hidden-up");
+                    currentSection.classList.add("hidden-down");
+                }
+                currentSectionId--; // Move to the next section
+            }
 
             prevSection.classList.remove("hidden-up");
-            prevSection.classList.add("active"); // Move previous section from above
+            prevSection.classList.add("active");
 
-            currentSectionId = prevSection.getAttribute("data-id"); // Update current section
+            currentSectionId = Number(prevSection.dataset.id);
         }
     }
 
     function moveLogo() {
         jump = false;
-        readjustheight();
-        setTimeout(() => {
-            moveUp(); // Move logo section up after 2 seconds
-        }, 3000);
+        readjustHeight();
+        setTimeout(moveUp, 3000); // Move up after 3s
     }
 
-    // Automatically start logo animation on page load
+    // Start logo animation on page load
     moveLogo();
 
-    // Keyboard navigation (Arrow keys, Page Up, Page Down)
+    // Keyboard navigation
+    let isMoving = false; // Cooldown flag
     document.addEventListener("keydown", (e) => {
-        jump = false;
-        if (e.key === "ArrowDown" || e.key === "PageDown") moveUp();
-        if (e.key === "ArrowUp" || e.key === "PageUp") moveDown();
+        if (isMoving) return; // Prevent multiple triggers
+    
+        if (["ArrowDown", "PageDown"].includes(e.key)) {
+            jump = false;
+            isMoving = true;
+            moveUp();
+            setTimeout(() => (isMoving = false), 800); // Allow movement after 0.8s
+        } else if (["ArrowUp", "PageUp"].includes(e.key)) {
+            jump = false;
+            isMoving = true;
+            moveDown();
+            setTimeout(() => (isMoving = false), 800); // Allow movement after 0.8s
+        }
     });
 
     // Mouse wheel scrolling navigation
     window.addEventListener("wheel", (event) => {
+        if (isMoving) return; // Prevent multiple triggers
+    
         jump = false;
+        isMoving = true;
+    
         if (event.deltaY > 0) {
             moveUp(); // Scroll down moves to the next section
         } else if (event.deltaY < 0) {
             moveDown(); // Scroll up moves to the previous section
         }
+    
+        setTimeout(() => (isMoving = false), 800); // Allow movement after transition
     });
+    
 
-    cards.forEach((card)=>{
-        card.addEventListener("click", ()=>{
-            nextSectionId = parseInt(card.dataset.gotoId);
+    // Card click navigation
+    cards.forEach((card) => {
+        card.addEventListener("click", () => {
+            nextSectionId = Number(card.dataset.gotoId);
             jump = true;
             moveUp();
         });
