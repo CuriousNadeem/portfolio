@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
             // Update the current section ID
             currentSectionId = Number(nextSection.dataset.id);
+            navbarManage();
         }
     }
     
@@ -70,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
             prevSection.classList.add("active");
 
             currentSectionId = Number(prevSection.dataset.id);
+            navbarManage();
         }
     }
 
@@ -125,4 +127,18 @@ document.addEventListener("DOMContentLoaded", () => {
             moveUp();
         });
     });
+    function navbarManage(){
+       const navbar = document.querySelector(".navbar");
+        if(currentSectionId > 1) {
+            navbar.classList.add("active");
+        } else {
+            navbar.classList.remove("active");
+        }
+    }
+    menuSwitch();
+    function menuSwitch() {
+        const menubarList = document.querySelectorAll(".menu-bar li");
+        menubarList[1].classList.add("active");
+    }
 });
+

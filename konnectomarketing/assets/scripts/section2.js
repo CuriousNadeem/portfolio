@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     timeoutId = setTimeout(() => {
                         topSection.classList.add("active");
                         bottomSection.classList.add("active");
-                        console.log("run");
                     }, 1000);
     
                 } else {
