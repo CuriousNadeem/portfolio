@@ -14,7 +14,7 @@ body {
     padding: 0;
     color: var(--text-color);
     overflow: hidden;
-    background-image: url(/konnectomarketing/assets/image/background.png);
+    background-image: url(../../image/background.png);
     background-size:cover;
 }
 
