@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Workflow Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f8f9fa;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #343a40;
+    }
+    code {
+      background-color: #e9ecef;
+      padding: 4px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      display: inline-block;
+      margin: 4px 0;
+    }
+    pre {
+      background-color: #e9ecef;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>GitHub Project Workflow Guide</h1>
+  <p>This page helps you remember how to manage your web project folders using Git, GitHub, and Visual Studio Code (VS Code).</p>
+
+  <div class="section">
+    <h2>🔧 Basic Git Workflow Overview</h2>
+    <ul>
+      <li>Each website is stored in a subfolder (e.g., <code>ShamsRig/</code>).</li>
+      <li>You work on that website in its own Git branch.</li>
+      <li>You merge that branch into <code>main</code> to make it live on GitHub Pages.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🌿 Creating and Switching Branches</h2>
+    <p>To create and switch to a new branch:</p>
+    <pre><code>git checkout -b branchname</code></pre>
+    <p>Example for ShamsRig:</p>
+    <pre><code>git checkout -b shamsrig</code></pre>
+
+    <p>To switch to an existing branch:</p>
+    <pre><code>git checkout shamsrig</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>✏️ Stage, Commit, and Push Changes</h2>
+    <h3>Using Terminal:</h3>
+    <pre><code>git add foldername/
+git commit -m "Description of the change"
+git push origin branchname</code></pre>
+    <p>Example for ShamsRig:</p>
+    <pre><code>git add ShamsRig/
+git commit -m "Updated styles for ShamsRig"
+git push origin shamsrig</code></pre>
+
+    <h3>Using VS Code:</h3>
+    <ul>
+      <li>Use the <strong>+</strong> icon to stage files.</li>
+      <li>Use the <strong>Commit</strong> button in the source control panel to commit.</li>
+      <li>Use the <strong>Push</strong> or <strong>Sync Changes</strong> button to upload to GitHub.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🔀 Merge a Branch into Main</h2>
+    <pre><code>git checkout main
+git pull origin main
+git merge branchname
+git push origin main</code></pre>
+    <p>Example for merging <code>shamsrig</code> into <code>main</code>:</p>
+    <pre><code>git checkout main
+git pull origin main
+git merge shamsrig
+git push origin main</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>🌐 GitHub Pages Setup</h2>
+    <ol>
+      <li>Go to your GitHub repository.</li>
+      <li>Open <strong>Settings</strong> &rarr; <strong>Pages</strong>.</li>
+      <li>Choose branch: <code>main</code>, folder: <code>/root</code>.</li>
+      <li>Your site will be available at:<br>
+        <code>https://yourusername.github.io/Portfolio/SubfolderName/</code></li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>🔁 Recap: Full Update Process</h2>
+    <pre><code>git checkout shamsrig
+# Make changes in VS Code
+git add ShamsRig/
+git commit -m "Updated footer"
+git push origin shamsrig
+
+git checkout main
+git pull origin main
+git merge shamsrig
+git push origin main</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>✅ VS Code vs Terminal Comparison</h2>
+    <table border="1" cellpadding="6">
+      <tr>
+        <th>Task</th>
+        <th>VS Code</th>
+        <th>Terminal</th>
+      </tr>
+      <tr>
+        <td>Stage Files</td>
+        <td>Click <strong>+</strong></td>
+        <td><code>git add folder/</code></td>
+      </tr>
+      <tr>
+        <td>Commit</td>
+        <td>Click <strong>Commit</strong></td>
+        <td><code>git commit -m "message"</code></td>
+      </tr>
+      <tr>
+        <td>Push</td>
+        <td>Click <strong>Push</strong></td>
+        <td><code>git push origin branch</code></td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>
