@@ -843,6 +843,7 @@ a.button.generate-btn::before {
 /*-----------------------[ 11.Section Six CSS ]------------------------*/
 .section-six {
     padding: 100px 0;
+    height: min-content;
 }
 .marketingRow {
     margin-top: 60px;
@@ -1121,6 +1122,7 @@ a.button.generate-btn::before {
 /*-----------------------[ 14.Pricing Page CSS ]------------------------*/
 .section-eight {
     padding: 100px 0;
+    height: min-content;
 }
 .tabs-btn {
     margin: 40px auto;
@@ -1218,6 +1220,7 @@ a.button.generate-btn::before {
     border-radius: 30px;
     background: var(--11, #1A1A1A);
     position: relative;
+    overflow: hidden;
 }
 .plan-text {
     color: #FFF;
