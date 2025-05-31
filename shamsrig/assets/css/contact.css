@@ -1,0 +1,49 @@
+.contactform {
+    padding: 0 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contact-container {
+    background-image: url(../images/home-page/Pattern.png);
+    background-color: rgb(217 217 217 / 10%);
+    border-radius: 30px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.contact-heading {
+    color: var(--text-color);
+    text-align: center;
+    padding: 30px 20px 30px 20px;
+}
+
+/* Input and Textarea Styling */
+.contact-container input,
+.contact-container textarea {
+    width: calc(70% - 20px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--secondary-color);
+    background: #1A1A1A;
+    color: var(--text-color);
+}
+
+/* Focus State for Inputs and Textarea */
+.contact-container input:focus,
+.contact-container textarea:focus {
+    border-color: var(--accent-color);
+    /* Highlight border color */
+    outline: none;
+    /* Remove default outline */
+    color: var(--text-color);
+    background-color: #1A1A1A;
+}
+
+.button-group {
+    margin: 20px;
+}
+.button-group a {
+    padding: 12px 50px 12px 50px;
+}

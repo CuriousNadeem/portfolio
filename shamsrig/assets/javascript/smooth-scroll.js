@@ -378,4 +378,11 @@
         "function" == typeof define && define.amd ? define(function () {
             return ne
         }) : "object" == typeof exports ? module.exports = ne : window.SmoothScroll = ne
-}();
+
+        window.smoothScrollHack = {
+            stopScroll: function () {
+                b.length = 0;  // clear scroll queue
+                g = false;     // stop the animation loop
+            }
+        };
+    }();
