@@ -11,9 +11,9 @@ $(document).ready(function() {
             subject: document.getElementById('subject').value,
             message: document.getElementById('message').value
         };
-        const email = 'editingarena@gmail.com';
-        const serviceId = 'service_5yoreop';
-        const templateId = 'template_r02m4vh';
+        const email = 'atshammughal28@gmail.com';
+        const serviceId = 'service_2kqwadd';
+        const templateId = 'template_shamsrig';
         // Send the form data using EmailJS
         emailjs.send(serviceId, templateId, formData)
         .then(function(response) {

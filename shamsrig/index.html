@@ -515,12 +515,12 @@
             </div>
          </div>
       </div>
-      <img class="client-img1" src="assets/images/home-page/client-img1.jpg" alt="client-img1">
-      <img class="client-img2" src="assets/images/home-page/client-img2.jpg" alt="client-img2">
-      <img class="client-img3" src="assets/images/home-page/client-img3.jpg" alt="client-img3">
-      <img class="client-img4" src="assets/images/home-page/client-img4.jpg" alt="client-img4">
-      <img class="client-img5" src="assets/images/home-page/client-img5.jpg" alt="client-img5">
-      <img class="client-img6" src="assets/images/home-page/client-img6.jpg" alt="client-img6">
+      <img class="client-img1" src="assets/images/png/Object1.png" alt="client-img1">
+      <img class="client-img2" src="assets/images/png/Object2.png" alt="client-img2">
+      <img class="client-img3" src="assets/images/png/Object3.png" alt="client-img3">
+      <img class="client-img4" src="assets/images/png/Object4.png" alt="client-img4">
+      <img class="client-img5" src="assets/images/png/Object5.png" alt="client-img5">
+      <img class="client-img6" src="assets/images/png/Object6.png" alt="client-img6">
    </section>
    <!-- ====================================== Section Eight ===================================== -->
    <section class="section-eight pt-0" id="shop-two">
@@ -833,11 +833,11 @@
             <textarea id="message" name="message" placeholder="Your Message" required></textarea>
             <p class="mailalert" id="js-mailalert" name="mailalert"></p>
             <div class="button-group">
-               <a href="#" class="button" data-id="contact">Send
+               <button type="submit" class="button" name="submit">Send
                   <span class="hoverEffect">
                      <span></span>
                   </span>
-               </a>
+               </button>
             </div>
          </form>
       </div>
@@ -876,11 +876,11 @@
                <div class="box-footer">
                   <p class="resour">Resources</p>
                   <ul class="foot-links">
-                     <li><a href="#about">About</a></li>
-                     <li><a href="#blog">Blog</a></li>
-                     <li><a href="#features">Features</a></li>
-                     <li><a href="#faq">FAQs</a></li>
-                     <li class="mb-0"><a href="#">Request API Access</a></li>
+                     <li><a class="nav-btn" href="#" data-id="home">Home</a></li>
+                     <li><a class="nav-btn" href="#" data-id="features">Features</a></li>
+                     <li><a class="nav-btn" href="#" data-id="about">About</a></li>
+                     <li><a class="nav-btn" href="#" data-id="faq">Faqs</a></li>
+                     <li class="mb-0"><a class="nav-btn" href="#" data-id="contact">Contact</a></li>
                   </ul>
                </div>
                <div class="box-footer">
@@ -890,9 +890,9 @@
                      </li>
                      <li><a href="javascript:void(0);" data-bs-toggle="modal"
                            data-bs-target="#exampleModal">Register</a></li>
-                     <li><a href="#contact">Contact Us</a></li>
-                     <li><a href="#">Privacy Policy</a></li>
-                     <li class="mb-0"><a href="#">Terms & Conditions</a></li>
+                     <li><a class="nav-btn" href="#" data-id="contact">Contact</a></li>
+                     <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                     <li class="mb-0"><a href="termsandconditions.html">Terms & Conditions</a></li>
                   </ul>
                </div>
             </div>
@@ -1095,6 +1095,16 @@
    <script src="assets/javascript/script.js"></script>
    <script src="assets/javascript/contact.js"></script>
    <script src="assets/javascript/customjavascript.js"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+   <script type="text/javascript">
+      (function () {
+         emailjs.init({
+               publicKey: "ViQadzLwTKIlTW_yr",
+         });
+      })();
+   </script>
 </body>
 
 </html>
