@@ -1,0 +1,68 @@
+[
+  {
+    "id": "sync-mini",
+    "name": "Sync Mini",
+    "price": "7999",
+    "description": "Level up your setup with SYNC Mini — the compact LED sync device that brings your screen to life. Designed for gamers and creators, SYNC Mini mirrors your display’s colors to LED strips behind your monitor, delivering immersive lighting in real time.",
+    "category": "Sync Series",
+    "features": [
+      "<li>Compact & Affordable</li>",
+      "<li>Minimal Delay</li>",
+      "<li>Real-time LED Sync</li>",
+      "<li>Basic Multi-Screen Support</li>"
+    ],
+    "cover_image": "assets/images/home-page/sugg-img1.jpg",
+    "product_image": "assets/images/product-images/product-img1.jpg",
+    "gallery_images": [
+      "assets/images/product-images/product-img1.jpg",
+      "assets/images/product-images/gallery1-img1.jpg",
+      "assets/images/product-images/gallery1-img2.jpg",
+      "assets/images/product-images/gallery1-img3.jpg",
+      "assets/images/product-images/gallery1-img4.jpg"
+    ]
+  },
+  {
+    "id": "sync",
+    "name": "Sync",
+    "price": "$120",
+    "description": "",
+    "category": "Sync Series",
+    "features": [
+      "<li>Upgraded Chipset Performance</li>",
+      "<li>Advanced Customization</li>",
+      "<li>Preset Modes & Profiles</li>",
+      "<li>Tri-Mode Connection</li>"
+    ],
+    "cover_image": "assets/images/home-page/sugg-img2.jpg",
+    "product_image": "assets/images/product-images/product-img2.jpg",
+    "gallery_images": [
+      "assets/images/product-images/product-img1.jpg",
+      "assets/images/product-images/gallery2-img1.jpg",
+      "assets/images/product-images/gallery2-img2.jpg",
+      "assets/images/product-images/gallery2-img3.jpg",
+      "assets/images/product-images/gallery2-img4.jpg"
+    ]
+  },
+  {
+    "id": "sync-pro",
+    "name": "Sync Pro",
+    "price": "$180",
+    "description": "",
+    "category": "Sync Series",
+    "features": [
+        "<li>Dongle Sync Support</li>",
+        "<li>Plug & Play Support</li>",
+        "<li>No Delay</li>",
+        "<li>4-Mode Connection</li>"
+        ],
+    "cover_image": "assets/images/home-page/sugg-img3.jpg",
+    "product_image": "assets/images/product-images/product-img3.jpg",
+    "gallery_images": [
+      "assets/images/product-images/product-img1.jpg",
+      "assets/images/product-images/gallery3-img1.jpg",
+      "assets/images/product-images/gallery3-img2.jpg",
+      "assets/images/product-images/gallery3-img3.jpg",
+      "assets/images/product-images/gallery3-img4.jpg"
+    ]
+  }
+]
