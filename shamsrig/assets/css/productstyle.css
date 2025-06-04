@@ -10,10 +10,14 @@
   margin: 50px auto;
 }
 .pr-card {
-  background: #1A1A1A;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px #6F6F6F;
+    background-image: url(../images/home-page/Pattern.png);
+    background-color: rgb(217 217 217 / 10%);
+    border-radius: 30px;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .pr-row {
   display: flex;

@@ -6,7 +6,7 @@
 }
 .checkout-wrapper {
   max-width: 1100px;
-  margin: auto;
+  margin: 50px auto;
   padding: 40px 20px;
     background-image: url(../images/home-page/Pattern.png);
     background-color: rgb(217 217 217 / 10%);
@@ -39,14 +39,13 @@ h1, h2, h3, h4, h5, h6, p {
 
 .summary-column {
   width: 320px;
-  background: #1A1A1A;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
 }
 
 .product-summary img {
-  max-width: 100px;
+  max-width: 200px;
   margin-bottom: 15px;
   border-radius: 8px;
 }
@@ -116,6 +115,7 @@ h1, h2, h3, h4, h5, h6, p {
 .bank-details {
   background: #1A1A1A;
   padding: 20px;
+  border: 1px solid var(--accent-color);
   border-radius: 8px;
   margin-bottom: 20px;
 }

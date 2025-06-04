@@ -1,3 +1,5 @@
+// checkout.js
+
 document.addEventListener("DOMContentLoaded", () => {
   const billingForm = document.getElementById("billing-form");
   const paymentSection = document.getElementById("payment-section");
@@ -6,8 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let orderData = {};
 
-  // Load product summary from JSON using localStorage
-  const productId = localStorage.getItem("selectedProduct");
+  // Load product summary from URL
+  const params = new URLSearchParams(window.location.search);
+  const productId = params.get("id");
+
   if (productId) {
     fetch("assets/data/product-data.json")
       .then(res => res.json())
@@ -23,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
           id: product.id,
           name: product.name,
           price: product.price,
+          image: product.product_image
         };
       });
   }
@@ -77,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await res.json();
       if (result.success) {
         alert("Order placed successfully!");
-        localStorage.removeItem("selectedProduct");
         window.location.href = "thank-you.html";
       } else {
         alert("Failed to place order.");

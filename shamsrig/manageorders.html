@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Orders - ShamsRig</title>
+  <link rel="stylesheet" href="assets/css/manageorders.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #101014;
+      color: #fff;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #1e1f29;
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #2a2b38;
+    }
+    th {
+      background-color: #c025ff;
+      color: #000;
+    }
+    tr:hover {
+      background-color: #2a2b38;
+    }
+    img.thumbnail {
+      width: 80px;
+      height: auto;
+      border-radius: 6px;
+    }
+    .status-dropdown {
+      padding: 6px;
+      border-radius: 4px;
+      background-color: #282a36;
+      color: #fff;
+      border: 1px solid #444;
+    }
+    .delete-btn {
+      background-color: #ff4d4d;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .delete-btn:hover {
+      background-color: #cc0000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Order Management</h1>
+  <table id="orders-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Product</th>
+        <th>Product Image</th>
+        <th>Price</th>
+        <th>Timestamp</th>
+        <th>Screenshot</th>
+        <th>Status</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody id="orders-body">
+      <!-- Orders will be dynamically inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("assets/data/orders.json")
+        .then((res) => res.json())
+        .then((orders) => {
+          const tbody = document.getElementById("orders-body");
+          const now = new Date();
+
+          orders.forEach((order, index) => {
+            const orderDate = new Date(order.timestamp);
+            const diffDays = (now - orderDate) / (1000 * 60 * 60 * 24);
+
+            // Auto-remove if older than 90 days and status is completed
+            if (order.status === "Completed" && diffDays > 90) return;
+
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${order.fullname}</td>
+              <td>${order.email}</td>
+              <td>${order.phone}</td>
+              <td>${order.address}, ${order.city}, ${order.zipcode}</td>
+              <td>${order.product.name}</td>
+              <td><a href="${order.product.image}" target="_blank"><img src="${order.product.image}" class="thumbnail" /></a></td>
+              <td>${order.product.price}</td>
+              <td>${order.timestamp}</td>
+              <td><a href="${order.screenshot}" target="_blank"><img src="${order.screenshot}" class="thumbnail" /></a></td>
+              <td>
+                <select class="status-dropdown" data-index="${index}">
+                  <option value="Not Completed" ${order.status === "Not Completed" ? "selected" : ""}>Not Completed</option>
+                  <option value="Processing" ${order.status === "Processing" ? "selected" : ""}>Processing</option>
+                  <option value="Out for Delivery" ${order.status === "Out for Delivery" ? "selected" : ""}>Out for Delivery</option>
+                  <option value="Completed" ${order.status === "Completed" ? "selected" : ""}>Completed</option>
+                </select>
+              </td>
+              <td><button class="delete-btn" data-index="${index}">Delete</button></td>
+            `;
+            tbody.appendChild(row);
+          });
+
+          document.querySelectorAll(".status-dropdown").forEach((dropdown) => {
+            dropdown.addEventListener("change", (e) => {
+              const idx = e.target.getAttribute("data-index");
+              orders[idx].status = e.target.value;
+              saveUpdatedOrders(orders);
+            });
+          });
+
+          document.querySelectorAll(".delete-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              const idx = e.target.getAttribute("data-index");
+              orders.splice(idx, 1);
+              saveUpdatedOrders(orders);
+              window.location.reload();
+            });
+          });
+        });
+
+      function saveUpdatedOrders(updatedOrders) {
+        fetch("update-orders.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedOrders),
+        });
+      }
+    });
+  </script>
+</body>
+</html>
