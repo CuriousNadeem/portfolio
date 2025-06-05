@@ -19,7 +19,8 @@
       "assets/images/product-images/gallery1-img2.jpg",
       "assets/images/product-images/gallery1-img3.jpg",
       "assets/images/product-images/gallery1-img4.jpg"
-    ]
+    ],
+    "enabled": true
   },
   {
     "id": "sync",
@@ -41,7 +42,8 @@
       "assets/images/product-images/gallery2-img2.jpg",
       "assets/images/product-images/gallery2-img3.jpg",
       "assets/images/product-images/gallery2-img4.jpg"
-    ]
+    ],
+    "enabled": true
   },
   {
     "id": "sync-pro",
@@ -63,6 +65,7 @@
       "assets/images/product-images/gallery3-img2.jpg",
       "assets/images/product-images/gallery3-img3.jpg",
       "assets/images/product-images/gallery3-img4.jpg"
-    ]
+    ],
+    "enabled": false
   }
 ]

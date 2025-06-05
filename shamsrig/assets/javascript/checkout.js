@@ -79,12 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
         body: formData
       });
 
-      const result = await res.json();
-      if (result.success) {
+      const data = await res.json(); // ✅ FIXED: correct variable used here
+
+      if (data.success) {
         alert("Order placed successfully!");
-        window.location.href = "thank-you.html";
+        // ✅ Redirect to thank you page
+        window.location.href = "thankyou.html";
       } else {
-        alert("Failed to place order.");
+        alert("Error: " + (data.message || "Unable to place order."));
       }
     } catch (err) {
       console.error(err);

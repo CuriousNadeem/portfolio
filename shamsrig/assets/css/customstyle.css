@@ -160,3 +160,14 @@ body {
 .nav-btn.active-btn {
   color: var(--secondary-color) !important; 
 }
+.shop-btn {
+    color: var(--1, #FFF);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    cursor: pointer;
+}
+.shop-btn.active {
+  color: var(--secondary-color) !important; 
+}

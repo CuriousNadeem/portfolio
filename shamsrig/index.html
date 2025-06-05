@@ -50,6 +50,7 @@
                   <li><a class="nav-btn" href="#" data-id="home">Home</a></li>
                   <li><a class="nav-btn" href="#" data-id="features">Features</a></li>
                   <li><a class="nav-btn" href="#" data-id="about">About</a></li>
+                  <li><a class="shop-btn" href="https://shop.shamsrig.com/">catalogue</a></li>
                   <li><a class="nav-btn" href="#" data-id="testimonials">Testimonials</a></li>
                   <li><a class="nav-btn" href="#" data-id="shop-two">Shop</a></li>
                   <li><a class="nav-btn" href="#" data-id="faq">FAQs</a></li>
@@ -303,7 +304,7 @@
                   <p class="eugiat flex-pri">An upgrade from the Mini, SYNC will offer enhanced lighting precision, deeper customization, and broader monitor compatibility. Designed for those who want more control and power, SYNC is built to deliver a next-level immersive lighting experience.</p>
                   <Span class="launching-update">Launching Soon — Stay Tuned!</Span>
                   <div class="tryImage-btn-main">
-                     <a href="" class="button nav-btn place-order-btn" data-product-id="sync">Contact Us for More Details
+                     <a href="#" class="button place-order-btn" data-product-id="sync">Contact Us for More Details
                         <span class="hoverEffect">
                            <span></span>
                         </span>
@@ -321,7 +322,7 @@
                   <p class="eugiat flex-pri">The future of display lighting starts here. SYNC Pro is our most powerful upcoming device, featuring wireless connectivity, smart ambient adjustment, and mobile app controls. Perfect for pros, streamers, and lighting enthusiasts.</p>
                   <Span class="launching-update">Launching Soon — Stay Tuned!</Span>
                   <div class="tryImage-btn-main">
-                     <a href="" class="button nav-btn place-order-btn" data-product-id="sync-pro">Contact Us for More Details
+                     <a href="#" class="button place-order-btn" data-product-id="sync-pro">Contact Us for More Details
                         <span class="hoverEffect">
                            <span></span>
                         </span>
@@ -586,7 +587,7 @@
                            <li>Tri-Mode Connection</li>
                         </ul>
                         <div class="pricing-btn">
-                           <a href="" class="button place-order-btn" data-product-id="sync"> Coming Soon
+                           <a href="#" class="button place-order-btn" data-product-id="sync"> Coming Soon
                               <span class="hoverEffect">
                                  <span></span>
                               </span>
@@ -605,7 +606,7 @@
                            <li>4-Mode Connection</li>
                         </ul>
                         <div class="pricing-btn">
-                           <a href="" class="button place-order-btn" data-product-id="sync-pro"> Coming Soon
+                           <a href="#" class="button place-order-btn" data-product-id="sync-pro"> Coming Soon
                               <span class="hoverEffect">
                                  <span></span>
                               </span>
@@ -629,7 +630,7 @@
                            <li>Compact Room Coverage</li>
                         </ul>
                         <div class="pricing-btn">
-                           <a href="" class="button place-order-btn" data-product-id="aqua-mini"> Coming Soon
+                           <a href="#" class="button place-order-btn" data-product-id="aqua-mini"> Coming Soon
                               <span class="hoverEffect">
                                  <span></span>
                               </span>
@@ -648,7 +649,7 @@
                            <li>App-Controlled Experience</li>
                         </ul>
                         <div class="pricing-btn">
-                           <a href="" class="button place-order-btn" data-product-id="aqua"> Coming Soon
+                           <a href="#" class="button place-order-btn" data-product-id="aqua"> Coming Soon
                               <span class="hoverEffect">
                                  <span></span>
                               </span>
@@ -667,7 +668,7 @@
                            <li>AI Mood Intelligence</li>
                         </ul>
                         <div class="pricing-btn">
-                           <a href="" class="button place-order-btn" data-product-id="aqua-pro"> Coming Soon
+                           <a href="#" class="button place-order-btn" data-product-id="aqua-pro"> Coming Soon
                               <span class="hoverEffect">
                                  <span></span>
                               </span>
@@ -1093,8 +1094,10 @@
    <script src="assets/javascript/gsap.js"></script>
    <script src="assets/javascript/slick.min.js"></script>
    <script src="assets/javascript/script.js"></script>
+   <script src="assets/javascript/wordpress.js"></script>
    <script src="assets/javascript/contact.js"></script>
    <script src="assets/javascript/customjavascript.js"></script>
+
 <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
@@ -1104,13 +1107,6 @@
                publicKey: "ViQadzLwTKIlTW_yr",
          });
       })();
-
-      document.querySelectorAll('.place-order-btn').forEach(btn => {
-         btn.addEventListener('click', () => {
-            const productId = btn.dataset.productId;
-            window.location.href = `product-details.html?id=${productId}`;
-         });
-      });
    </script>
 </body>
 

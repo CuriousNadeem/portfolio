@@ -3,36 +3,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctoButtons = document.querySelectorAll('.cto-btn');
   const sections = document.querySelectorAll("section[id]");
 
-  // PATCH: stop smooth-scroll.js animation
-  function cancelOngoingSmoothScroll() {
-    if (window.SmoothScrollOptions && typeof window.SmoothScrollOptions.destroy === 'function') {
-      window.SmoothScrollOptions.destroy();
-    }
-
-    // Clear scroll queue `b[]` and cancel animation flags manually
-    if (window.smoothScrollHack) {
-      window.smoothScrollHack.b.length = 0;
-      window.smoothScrollHack.g = false;
-    }
-  }
-
   // Scroll using native scroll and reset smooth-scroll.js
     function scrollToSection(targetId) {
-    const section = document.getElementById(targetId);
-    if (!section) {
-        console.warn(`[Scroll] No section found with ID: ${targetId}`);
-        return;
-    }
+      const section = document.getElementById(targetId);
+      if (!section) {
+          console.warn(`[Scroll] No section found with ID: ${targetId}`);
+          return;
+      }
 
-    // Stop smooth-scroll.js momentum scroll if active
-    if (window.smoothScrollHack?.stopScroll) {
-        window.smoothScrollHack.stopScroll();
-    }
+      // Stop smooth-scroll.js momentum scroll if active
+      if (window.smoothScrollHack?.stopScroll) {
+          window.smoothScrollHack.stopScroll();
+      }
 
-    // Wait a tick to let momentum settle, then scroll smoothly
-    setTimeout(() => {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 50);
+      // Wait a tick to let momentum settle, then scroll smoothly
+      setTimeout(() => {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
     }
 
   // Click handlers for nav buttons
@@ -80,4 +67,58 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.3 });
 
   sections.forEach(section => observer.observe(section));
+
+  // Click handler for all "Place Order" buttons
+  document.querySelectorAll('.place-order-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const productId = btn.dataset.productId;
+
+        fetch("assets/data/product-data.json")
+          .then(res => res.json())
+          .then(products => {
+          const product = products.find(p => p.id === productId);
+
+          if (product && product.enabled) {
+              window.location.href = `product-details.html?id=${productId}`;
+          } else {
+              scrollToSection("contact");
+              // const section = document.getElementById("contact");
+              // if (!section) {
+              //   console.warn(`[Scroll] No section found with ID: ${targetId}`);
+              //   return;
+              // }
+
+              // // Stop smooth-scroll.js momentum scroll if active
+              // if (window.smoothScrollHack?.stopScroll) {
+              //   window.smoothScrollHack.stopScroll();
+              // }
+
+              // // Wait a tick to let momentum settle, then scroll smoothly
+              // setTimeout(() => {
+              //   section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              // }, 50);
+          }
+        });
+    });
+  });
+  function handleHashScroll() {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith("#")) {
+      const id = hash.substring(1); // remove '#'
+      scrollToSection(id); // ✅ use your own scrollToSection
+
+      // Remove the hash from the URL after scroll
+      setTimeout(() => {
+        history.replaceState(null, '', window.location.pathname);
+      }, 1000); // wait 1 second for scroll to complete (adjust if needed)
+    }
+  }
+
+
+  // Initial scroll on page load
+  handleHashScroll();
+
+  // Scroll on hashchange (e.g. back/forward button)
+  window.addEventListener("hashchange", handleHashScroll);
 });
