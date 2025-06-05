@@ -5,75 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manage Orders - ShamsRig</title>
   <link rel="stylesheet" href="assets/css/manageorders.css" />
+  <link rel="icon" type="image/x-icon" href="assets/images/png/favicon.png">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: var(--primary-color, #0C0512);
+      background: #101014;
       color: #fff;
+      padding: 20px;
       margin: 0;
-      padding: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #1e1f29;
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #2a2b38;
+    }
+    th {
+      background-color: #c025ff;
+      color: #000;
+    }
+    tr:hover {
+      background-color: #2a2b38;
+    }
+    img.thumbnail {
+      width: 80px;
+      height: auto;
+      border-radius: 6px;
+    }
+    .status-dropdown {
+      padding: 6px;
+      border-radius: 4px;
+      background-color: #282a36;
+      color: #fff;
+      border: 1px solid #444;
+    }
+    .delete-btn {
+      background-color: #ff4d4d;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .delete-btn:hover {
+      background-color: #cc0000;
     }
     .auth-screen {
-      height: 100vh;
-      width: 100%;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #0C0512;
+      z-index: 9999;
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
-      background: var(--primary-color, #0C0512);
+      align-items: center;
+      justify-content: center;
     }
-    .auth-box {
-      background: #1e1f29;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      text-align: center;
-    }
-    .auth-box h2 {
-      margin-bottom: 20px;
-      color: var(--secondary-color, #c025ff);
-    }
-    .auth-box input {
+    .auth-screen input {
       padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #444;
       width: 250px;
-      margin-bottom: 10px;
-      outline: none;
-      font-size: 1rem;
-      background: #2a2b38;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background: #222;
       color: #fff;
+      margin-bottom: 10px;
     }
-    .auth-box button {
-      background-color: var(--secondary-color, #c025ff);
+    .auth-screen button {
+      background-color: #c025ff;
       color: #fff;
       padding: 10px 20px;
       border: none;
-      font-weight: bold;
-      border-radius: 6px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    .auth-box p {
+    .auth-screen p {
       color: #ff4d4d;
-      margin-top: 10px;
       font-size: 0.9rem;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <!-- 🔒 Password Auth Screen -->
+  <!-- 🔐 Auth Screen -->
   <div class="auth-screen" id="auth-screen">
-    <div class="auth-box">
-      <h2>Admin Access</h2>
-      <input type="password" id="admin-password" placeholder="Enter password" />
-      <br />
-      <button onclick="verifyPassword()">Access</button>
-      <p id="auth-error" style="display: none;">Incorrect password. Try again.</p>
-    </div>
+    <input type="password" id="password-input" placeholder="Enter admin password" />
+    <button onclick="checkPassword()">Access Orders</button>
+    <p id="error-msg">Incorrect password. Try again.</p>
   </div>
 
-  <!-- ✅ This is the original order management UI -->
-  <div id="orders-wrapper" style="display: none; padding: 20px;">
+  <!-- ✅ Your Original Content -->
+  <div id="secure-container" style="display: none;">
     <h1>Order Management</h1>
     <table id="orders-table">
       <thead>
@@ -92,28 +119,29 @@
           <th>Delete</th>
         </tr>
       </thead>
-      <tbody id="orders-body"></tbody>
+      <tbody id="orders-body">
+        <!-- Orders will be dynamically inserted here -->
+      </tbody>
     </table>
   </div>
 
   <script>
-    // 🔐 ADMIN PASSWORD
-    const ADMIN_PASSWORD = "shamsrig123"; // << Change your password here
+    // 🔐 Password stored here
+    const ADMIN_PASSWORD = "shamsrig123";
 
-    function verifyPassword() {
-      const input = document.getElementById("admin-password").value;
-      const error = document.getElementById("auth-error");
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const errorMsg = document.getElementById("error-msg");
 
       if (input === ADMIN_PASSWORD) {
-        document.getElementById("auth-screen").remove();
-        document.getElementById("orders-wrapper").style.display = "block";
-        loadOrders(); // Load actual orders
+        document.getElementById("auth-screen").style.display = "none";
+        document.getElementById("secure-container").style.display = "block";
+        loadOrders();
       } else {
-        error.style.display = "block";
+        errorMsg.style.display = "block";
       }
     }
 
-    // ✅ Your original script now inside a function
     function loadOrders() {
       fetch("assets/data/orders.json")
         .then((res) => res.json())
@@ -124,6 +152,7 @@
           orders.forEach((order, index) => {
             const orderDate = new Date(order.timestamp);
             const diffDays = (now - orderDate) / (1000 * 60 * 60 * 24);
+
             if (order.status === "Completed" && diffDays > 90) return;
 
             const row = document.createElement("tr");
@@ -173,7 +202,9 @@
     function saveUpdatedOrders(updatedOrders) {
       fetch("update-orders.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(updatedOrders),
       });
     }
